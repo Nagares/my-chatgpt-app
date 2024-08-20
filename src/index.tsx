@@ -1,11 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';  // Убедитесь, что импортируете ваш главный компонент
 
-ReactDOM.render(
+const rootElement = document.getElementById('root') as HTMLElement;
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(
   <ChakraProvider>
     <App />
   </ChakraProvider>,
-  document.getElementById("root")
+  
 );
