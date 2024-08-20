@@ -1,3 +1,54 @@
+// import express from 'express';
+// import { OpenAI } from 'openai';
+// import dotenv from 'dotenv';
+// import cors from 'cors';  // Импортируем CORS
+
+// // Загружаем переменные окружения из файла .env
+// dotenv.config();
+
+// // Создаем экземпляр OpenAI
+// const openai = new OpenAI({
+//   apiKey: process.env.API_KEY, // Используйте переменные окружения для хранения ключа
+// });
+
+// // Инициализируем Express-приложение
+// const app = express();
+// app.use(express.json());
+
+// // Разрешаем CORS для всех источников
+// app.use(cors());
+
+// // Определяем маршрут для генерации ответа
+// app.post('/generate-response', async (req, res) => {
+//   const { prompt, transcription, systemPrompt } = req.body;
+
+//   try {
+//     const response = await openai.chat.completions.create({
+//       model: 'gpt-3.5-turbo',
+//       temperature: 0.2,
+//       messages: [
+//         { role: 'system', content: prompt },
+//         { role: 'user', content: transcription },
+//         { role: 'system', content: systemPrompt },
+//       ],
+//     });
+
+//     res.json({ response: response.choices[0].message.content });
+//   } catch (error) {
+//     console.error('Error generating response:', error);
+//     res.status(500).json({ error: 'Failed to generate response' });
+//   }
+// });
+
+// // Указываем порт
+// const port = process.env.PORT;
+
+// // Запускаем сервер
+// app.listen(port, () => {
+//   console.log(`Server is running on http://localhost:${port}`);
+// });
+
+
 import express from 'express';
 import { OpenAI } from 'openai';
 import dotenv from 'dotenv';
@@ -6,7 +57,7 @@ import cors from 'cors';
 dotenv.config();
 
 const openai = new OpenAI({
-  apiKey: "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"
+  apiKey: process.env.API_KEY
 });
 
 const app = express();
@@ -39,7 +90,7 @@ app.post('/generate-response', async  (req, res) => {
 });
 
 
-const port = 3002;
+const port = process.env.PORT;
 
 app.listen(port, () => {
 
